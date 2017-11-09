@@ -1,0 +1,52 @@
+@mixin ease-animation($seconds) {
+    -webkit-transition: all $seconds ease-in-out;
+    -moz-transition: all $seconds ease-in-out;
+    -o-transition: all $seconds ease-in-out;
+    transition: all $seconds ease-in-out;
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform: $transform;
+    transform: $transform;
+}
+
+.price::before{
+    content:"$";
+}
+
+.navbar-default .navbar-toggle {
+    margin-top: 14px;
+    margin-right: 0px;
+    padding: 9px 0px;
+    &:focus,
+    &:hover {
+        background-color: black;
+    }
+    border-color: red;
+    .icon-bar {
+        background-color: red;
+        transition: 300ms ease-in-out;
+        position: relative;
+        width: 24px;
+        height: 3px
+    }
+    .icon-bar:last-child {
+        @include transform(rotate(-45deg));
+        top: -7px
+    }
+    .icon-bar:nth-child(2) {
+        @include transform(rotate(45deg));
+        top: 7px
+    }
+    .icon-bar:nth-child(3) {
+        opacity: 0
+    }
+    &.collapsed .icon-bar {
+        @include transform(rotate(0deg));
+        top: 0;
+        opacity: 1
+    }
+}
